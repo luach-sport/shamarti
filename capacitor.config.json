@@ -1,0 +1,30 @@
+{
+  "appId": "com.luachsport.shamarti",
+  "appName": "Shamarti",
+  "webDir": "www",
+  "backgroundColor": "#F5F6F8",
+  "android": {
+    "backgroundColor": "#F5F6F8",
+    "allowMixedContent": false
+  },
+  "plugins": {
+    "StatusBar": {
+      "backgroundColor": "#F5F6F8",
+      "style": "LIGHT",
+      "overlaysWebView": false
+    },
+    "CapacitorUpdater": {
+      "autoUpdate": false,
+      "statsUrl": "",
+      "updateUrl": "",
+      "channelUrl": "",
+      "allowModifyUrl": false,
+      "appReadyTimeout": 15000,
+      "autoDeleteFailed": true,
+      "autoDeletePrevious": true,
+      "resetWhenUpdate": true,
+      "shakeMenu": false,
+      "disableJSLogging": true
+    }
+  }
+}
