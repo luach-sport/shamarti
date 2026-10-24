@@ -1,1 +1,59 @@
-<!doctype html><html lang="he" dir="rtl"><meta charset="utf-8"><title>שמרתי</title><body>בבנייה</body></html>
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F5F6F8">
+<meta name="description" content="שמרתי – שומרים סרטונים מטיקטוק, אינסטגרם ויוטיוב, אתרים וכל קישור, עם תיאור משלך וקטגוריות.">
+<title>שמרתי</title>
+<link rel="icon" href="icon.png">
+<link rel="apple-touch-icon" href="icon-512.png">
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem('shamarti.theme') || 'system';
+      if (t === 'system') t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', t);
+    } catch (e) { document.documentElement.setAttribute('data-theme', 'light'); }
+  })();
+</script>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app">
+  <main id="screen" tabindex="-1"></main>
+</div>
+<nav id="tabs" aria-label="ניווט ראשי">
+  <div class="inner">
+    <button type="button" data-action="tab" data-tab="home" aria-current="page">
+      <span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10l9-7 9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1Z"/></svg></span>
+      בית
+    </button>
+    <button type="button" data-action="tab" data-tab="cats">
+      <span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span>
+      קטגוריות
+    </button>
+    <button type="button" data-action="tab" data-tab="favs">
+      <span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01Z"/></svg></span>
+      מועדפים
+    </button>
+    <button type="button" data-action="tab" data-tab="settings">
+      <span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg></span>
+      הגדרות
+    </button>
+  </div>
+</nav>
+<div id="fab-root"></div>
+<div id="sheet-root"></div>
+<div id="toast-root" role="status" aria-live="polite"></div>
+<input type="file" id="import-file" accept="application/json,.json,text/plain" hidden>
+<input type="file" id="image-file" accept="image/*" hidden>
+<script src="cap-runtime.js"></script>
+<script src="js/version.js"></script>
+<script src="js/core.js"></script>
+<script src="js/meta.js"></script>
+<script src="js/update.js"></script>
+<script src="js/views.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
