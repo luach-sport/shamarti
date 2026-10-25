@@ -1,4 +1,4 @@
-/* שמרתי in-app updates.
+/* In-app updates (same system as MyCar).
    Every build publishes a signed update.json next to the APK on the GitHub release. The app checks it,
    verifies the signature with the public key baked into the app, and then installs the new app content
    in place (the native plugin re-checks the bundle's SHA-256 and rolls back if the new version fails to
