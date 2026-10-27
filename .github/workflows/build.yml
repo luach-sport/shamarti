@@ -10,6 +10,9 @@ on:
       - 'feedback/**'
       - 'tools/**'
       - 'tests/**'
+      - 'site/**'
+      - 'scripts/site/**'
+      - '.github/workflows/site.yml'
   workflow_dispatch:
 
 permissions:
