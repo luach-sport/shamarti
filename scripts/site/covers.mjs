@@ -14,7 +14,7 @@ export function installCovers() {
   };
 
   window.__cover = async ({ w, h, from, to, icon, text }) => {
-    await document.fonts.load('800 40px Rubik');
+    await document.fonts.load('800 40px Rubik').catch(() => {});
     const c = document.createElement('canvas');
     c.width = w;
     c.height = h;

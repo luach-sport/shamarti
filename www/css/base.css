@@ -1,7 +1,7 @@
 /* שמרתי – fonts, colours (light and dark), resets */
 @font-face {
   font-family: 'Rubik';
-  src: url('fonts/Rubik-var.ttf') format('truetype');
+  src: url('../fonts/Rubik-var.ttf') format('truetype');
   font-weight: 300 900;
   font-style: normal;
   font-display: swap;
