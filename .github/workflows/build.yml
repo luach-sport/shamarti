@@ -17,6 +17,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: build-${{ github.ref }}
@@ -141,6 +142,13 @@ jobs:
           ARGS=(-X PUT "repos/${GITHUB_REPOSITORY}/contents/update.json" -f message="גרסה זמינה לעדכון: ${APP_VERSION} (בנייה ${GITHUB_RUN_NUMBER})" -f content="$(base64 -w0 dist/update.json)" -f branch=main)
           if [ -n "$SHA" ]; then ARGS+=(-f sha="$SHA"); fi
           gh api "${ARGS[@]}" -q '.commit.sha' || echo "::warning::could not publish update.json in the repo"
+
+      - name: Refresh the website (new version number and what's new)
+        if: steps.key.outputs.signed == 'true'
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run site.yml --ref main -R "${GITHUB_REPOSITORY}"
 
       - name: Keep the test APK
         if: steps.key.outputs.signed != 'true'

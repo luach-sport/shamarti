@@ -1,7 +1,8 @@
 name: Website
 
 # The public site (GitHub Pages): user guide, download link and fresh screenshots of the app.
-# Rebuilt when the guide or the app changes, and after every new app release (for the version and "what's new").
+# Rebuilt when the guide or the app changes, and after every new app release: build.yml starts it
+# (workflow_dispatch) once update.json has the new version and "what's new".
 on:
   push:
     branches: [main]
@@ -10,9 +11,6 @@ on:
       - 'www/**'
       - 'scripts/site/**'
       - '.github/workflows/site.yml'
-  workflow_run:
-    workflows: ['Build APK']
-    types: [completed]
   workflow_dispatch:
 
 permissions:
@@ -24,7 +22,6 @@ concurrency:
 
 jobs:
   build:
-    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
