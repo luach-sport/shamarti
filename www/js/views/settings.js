@@ -27,7 +27,7 @@
     h += '<span class="section-label">כללי</span><div class="card list">' +
       navRow('open-sheet', 'message', 'פנייה / הצעת ייעול', 'מה להוסיף? מה לשפר? הפנייה מגיעה ישירות למפתח', '', ' data-sheet="feedback"') +
       V.updateRow() +
-      navRow('share-app', 'share', 'שיתוף האפליקציה', 'לשלוח לחברים קישור להורדה') +
+      navRow('share-app', 'share', 'שיתוף האפליקציה', 'קישור לאתר, או הקובץ עצמו בבלוטות\' ובוואטסאפ') +
       '</div>';
     h += '<div class="credit">' + SH.logo(44) + '<span class="n">שמרתי · גרסה ' + esc(SH.VERSION.version) + (SH.VERSION.build && SH.VERSION.build !== 'dev' ? ' (בנייה ' + esc(SH.VERSION.build) + ')' : '') + '</span><span class="by">פותח על ידי <b>Itzko</b></span></div>';
     return h;

@@ -154,6 +154,10 @@ check(await page.evaluate(() => window.SH.state.items.some((it) => it.src.starts
 await click('#tabs [data-tab="settings"]');
 await shot('09-settings', true);
 check(await page.isVisible('text=פותח על ידי'), 'credit in settings');
+await click('[data-action="share-app"]');
+check(await page.isVisible('[data-action="share-app-link"]') && await page.isVisible('[data-action="share-app-apk"]') && await page.isVisible('[data-action="share-app-copy"]'), 'share the app: link, APK file, copy');
+check((await page.textContent('.sheet')).includes('https://luach-sport.github.io/shamarti/'), 'share message has the site link');
+await click('.sheet-head [data-action="close-sheet"]');
 await click('[data-action="set-theme"][data-v="dark"]');
 check((await page.getAttribute('html', 'data-theme')) === 'dark', 'dark mode switches');
 await click('#tabs [data-tab="home"]');

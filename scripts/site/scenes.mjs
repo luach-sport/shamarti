@@ -1,5 +1,21 @@
-// What each screenshot shows. Every `set` runs inside the app page (sent as is), with { cover, info }.
-// `fill` types into a field afterwards, `scroll` is a selector to bring into view (or 'bottom').
+// The screenshots on שמרתי's site, taken by the Itzko site kit (kit/lib/shots.mjs in luach-sport/itzko).
+// prepare() fills the app with example saves; every scene's `set` then runs inside the app page (sent as is)
+// with { cover, info }. `fill` types into a field afterwards, `scroll` is a selector to bring into view (or 'bottom').
+import { installCovers } from './covers.mjs';
+import { seedApp, previewCover } from './seed.mjs';
+
+export async function prepare(page, { info }) {
+  await page.evaluate(installCovers);
+  await page.evaluate(seedApp);
+  await page.reload();
+  await page.waitForTimeout(1200);
+  await page.evaluate(installCovers);
+  const cover = await page.evaluate(previewCover);
+  await page.evaluate(async () => { window.__clipUrl = await window.__clip(window.SH.thumbs.src(window.SH.itemById('ex1').thumb)); });
+  return { cover, info };
+}
+export const reset = () => { window.SH.closeSheet(); window.scrollTo(0, 0); };
+
 // The first example (a TikTok recipe) has its video "downloaded": the app checks the file exists, so a stand-in is registered.
 const at = (tab) => `const SH = window.SH, ui = SH.ui; ui.clip = null; ui.stack = []; ui.tab = '${tab}'; ui.homeCat = 'all'; ui.catsEdit = false;
   SH.fs.web['videos/ex1.mp4'] = SH.fs.web['videos/ex1.mp4'] || { url: window.__clipUrl || '', size: 7400000 };
@@ -27,6 +43,7 @@ export const SCENES = [
   scene('settings-end', at('settings') + 'SH.render();', { scroll: 'bottom' }),
   scene('feedback', at('settings') + "SH.render(); SH.state.profile = { name: 'דני כהן', email: 'dani@example.com' }; SH.openSheet('feedback');",
     { fill: ['#fbm', 'הייתי רוצה לסדר שמירות גם בתיקיות בתוך קטגוריה'], wait: 600 }),
+  scene('share-app', at('settings') + "SH.render(); SH.openSheet('shareApp');", { wait: 800 }),
   scene('update', at('settings') + `SH.render();
     const b = parseInt(arg.info.build, 10) || 2;
     SH.VERSION.build = String(b > 1 ? b - 1 : b);

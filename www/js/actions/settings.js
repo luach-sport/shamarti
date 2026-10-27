@@ -20,7 +20,10 @@
   A['confirm-import'] = (el) => SH.importBackup(ui.sheet.data.doc, el.dataset.mode);
   A['export-csv'] = () => SH.exportCsv();
 
-  A['share-app'] = () => SH.shareText('שמרתי – שומרים סרטונים מטיקטוק, אינסטגרם ויוטיוב וכל קישור, עם תיאור וקטגוריה. להורדה:\n' + SH.APK_URL, 'שיתוף שמרתי');
+  A['share-app'] = () => SH.openSheet('shareApp');
+  A['share-app-link'] = () => { SH.closeSheet(); SH.shareApp.link(); };
+  A['share-app-apk'] = () => { SH.closeSheet(); SH.shareApp.apk(); };
+  A['share-app-copy'] = async () => { SH.closeSheet(); if (await SH.writeClipboard(SH.SITE_URL)) SH.toast('הקישור לאתר הועתק'); };
   A['check-update'] = async () => {
     const i = await SH.update.check(true);
     if (i) SH.openSheet('update'); else SH.toast(SH.update.error || 'יש לך את הגרסה האחרונה');

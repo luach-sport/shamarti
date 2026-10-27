@@ -9,3 +9,4 @@ www/cap-runtime.js
 dist/
 tests/shots/
 _site/
+.kit/
