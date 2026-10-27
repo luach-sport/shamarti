@@ -8,3 +8,4 @@ www/cap-runtime.js
 !signing/release.jks
 dist/
 tests/shots/
+_site/

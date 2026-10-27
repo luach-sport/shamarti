@@ -19,8 +19,16 @@
 - `www/css/` – עיצוב, קובץ לכל חלק במסך.
 - `tests/` – בדיקות בדפדפן (Playwright): `app.test.mjs` (כל המסכים) ו-`links-video.test.mjs` (תמונות טיקטוק והורדות, עם אינטרנט מדומה). מריצים שרת על `www` בפורט 8765 ואז `node tests/app.test.mjs`.
 
+## אתר ההסבר
+- מתפרסם אוטומטית ב-https://luach-sport.github.io/shamarti/ (`.github/workflows/site.yml`, לענף `gh-pages`).
+- `site/index.html` הוא השלד, וכל חלק בדף הוא קובץ קטן ב-`site/parts/` (פרק לכל מסך: `ch-home`, `ch-save`, `ch-item`, `ch-video`…). העיצוב ב-`site/css/`.
+- **בכל שינוי באפליקציה שמוסיף, משנה או מוריד מסך, כפתור או יכולת, מעדכנים באותו commit גם את הפרק המתאים ב-`site/parts/`** (הפתיח ורשימת הכפתורים).
+- צילומי המסך, מספר הגרסה ו"מה חדש" נוצרים לבד (`scripts/site/`: `scenes.mjs` קובע מה מצולם, `seed.mjs` הנתונים לדוגמה) מהאפליקציה עצמה ומ-`update.json`. לא מעלים צילומים ידנית.
+- לבנות מקומית: `CHROME=… node scripts/site/build.mjs` (התוצאה ב-`_site/`).
+- הקרדיט "פותח על ידי Itzko" מופיע בולט בראש הדף, בפרק משלו (`credit`) ובתחתית. לא מורידים.
+
 ## חשוב לדעת
-- **מה חדש**: לפני כל גרסה כותבים את השינויים ב-`release-notes.txt` (שורה לכל שינוי, בשפה פשוטה). זה מוצג בחלון "גרסה חדשה" באפליקציה.
+- **מה חדש**: לפני כל גרסה כותבים את השינויים ב-`release-notes.txt` (שורה לכל שינוי, בשפה פשוטה). זה מוצג בחלון "גרסה חדשה" באפליקציה ובאתר.
 - מספר גרסה: `APP_VERSION` ב-`.github/workflows/build.yml` (ובברירות המחדל ב-`scripts/prepare-web.mjs`, `scripts/make-update.mjs`, `www/js/core/config.js`).
 - שינוי בחלק הנייטיב (`scripts/patch-android.sh`, `capacitor.config.json`, `android-res/`, תוספים ב-`package.json`) מחייב התקנת APK חדש. האפליקציה מזהה את זה לבד ומציעה להוריד APK במקום עדכון פנימי. עדיף לא לגעת בזה בלי סיבה.
 - שיתוף מאפליקציות אחרות: `MainActivity` (נכתב ב-`patch-android.sh`) הופך ACTION_SEND לקישור `shamarti://share?text=…`, והאפליקציה מקבלת אותו דרך תוסף App (`getLaunchUrl` / `appUrlOpen`).

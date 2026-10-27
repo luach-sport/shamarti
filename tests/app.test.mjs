@@ -18,6 +18,7 @@ const click = async (sel) => { await page.click(sel); await page.waitForTimeout(
 const check = (cond, msg) => { if (!cond) errors.push('FAIL: ' + msg); else console.log('ok -', msg); };
 
 await shot('01-welcome');
+check(await page.evaluate(async () => { await document.fonts.ready; return [...document.fonts].some((f) => f.family.includes('Rubik') && f.status === 'loaded'); }), 'the app font (Rubik) loads');
 check(await page.isVisible('text=כאן יישמר כל מה ששווה לזכור'), 'welcome card shows for an empty app');
 
 // ---- first save through the sheet (preview cannot load in a plain browser: expect graceful fallback)
