@@ -1,0 +1,16 @@
+/* Save sheet: link preview box and sticky save button */
+.pv { display: flex; gap: 14px; padding: 12px; }
+.pv .thumb { width: 112px; flex: none; border-radius: 12px; }
+.pv .info { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 7px; }
+.pv .ttl { font-size: 15px; font-weight: 600; line-height: 1.4; overflow-wrap: anywhere; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+.pv .by { font-size: 13px; color: var(--muted); }
+.pv .status { display: flex; align-items: center; gap: 5px; font-size: 12px; color: var(--muted); }
+.pv .status.ok { color: var(--green-text); }
+.pv .acts { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
+.src-select { display: inline-flex; align-items: center; gap: 4px; position: relative; align-self: flex-start; }
+.src-select select { appearance: none; -webkit-appearance: none; min-height: 32px; padding: 0 28px 0 12px; border-radius: 999px; border: 0; background: var(--chip-dark); color: var(--chip-dark-ink); font-size: 12px; font-weight: 600; }
+.src-select svg { position: absolute; right: 8px; pointer-events: none; color: var(--chip-dark-ink); width: 14px; height: 14px; }
+.spin { width: 28px; height: 28px; border-radius: 50%; border: 3px solid rgba(255, 255, 255, 0.6); border-top-color: var(--primary); animation: spin 0.9s linear infinite; position: absolute; z-index: 2; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.skeleton { height: 12px; border-radius: 6px; background: var(--inset); }
+.sheet-foot { position: sticky; bottom: calc(-22px - env(safe-area-inset-bottom, 0px)); margin: 4px -18px calc(-22px - env(safe-area-inset-bottom, 0px)); padding: 12px 18px calc(18px + env(safe-area-inset-bottom, 0px)); background: var(--bg); border-top: 1px solid var(--line); z-index: 3; }
