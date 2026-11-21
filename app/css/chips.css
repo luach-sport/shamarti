@@ -1,0 +1,19 @@
+/* Chips: filters, tags and category labels */
+.chips { display: flex; gap: 8px; flex-wrap: wrap; }
+.chips.scroll { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin: 0 -16px; padding: 0 16px; }
+.chips.scroll::-webkit-scrollbar { display: none; }
+.chip { flex: none; min-height: 44px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font-size: 14px; font-weight: 500; white-space: nowrap; display: inline-flex; align-items: center; gap: 7px; }
+.chip .n { font-size: 12px; opacity: 0.75; }
+.chip .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--c); flex: none; }
+.chip[aria-pressed="true"] { background: var(--chip-dark); color: var(--chip-dark-ink); border-color: var(--chip-dark); }
+.chip.accent[aria-pressed="true"] { background: var(--primary); color: var(--on-primary); border-color: var(--primary); }
+.chip.accent[aria-pressed="true"] .dot { background: currentColor; }
+.chip.dashed { border: 1.5px dashed var(--faint); background: transparent; }
+.chip.sm { min-height: 40px; border-radius: 12px; font-size: 13px; padding: 0 10px 0 12px; }
+.chip.sm.on { border-color: var(--primary); color: var(--primary-text); background: var(--primary-soft); font-weight: 600; }
+.tagchip { display: inline-flex; align-items: center; gap: 2px; min-height: 36px; padding: 0 4px 0 12px; border-radius: 10px; background: var(--inset); font-size: 14px; }
+.tagchip button { width: 30px; height: 30px; border: 0; background: transparent; color: var(--muted); display: inline-flex; align-items: center; justify-content: center; border-radius: 8px; }
+.tagchip.plain { padding: 0 12px; border: 0; color: var(--ink); }
+.catchip { display: inline-flex; align-items: center; gap: 6px; min-height: 36px; padding: 0 12px; border-radius: 999px; border: 0; background: var(--soft); color: var(--cink); font-size: 13px; font-weight: 600; }
+.catchip .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--c); }
+:root[data-theme="dark"] .catchip { background: var(--dsoft); color: var(--dink); }
